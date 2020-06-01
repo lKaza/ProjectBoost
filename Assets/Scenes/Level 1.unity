@@ -220,34 +220,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 174313696, guid: ce709486807cbb84992e8945bb69dc10, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1870109265470175310, guid: ce709486807cbb84992e8945bb69dc10,
         type: 3}
       propertyPath: m_Name
       value: RocketShip
       objectReference: {fileID: 0}
-    - target: {fileID: 3142964134529286280, guid: ce709486807cbb84992e8945bb69dc10,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5c3c0b5872388f5478bd5ea5549ced10, type: 3}
-    - target: {fileID: 3142964134529286280, guid: ce709486807cbb84992e8945bb69dc10,
+    - target: {fileID: 6070272804368220010, guid: ce709486807cbb84992e8945bb69dc10,
         type: 3}
       propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3142964134529286280, guid: ce709486807cbb84992e8945bb69dc10,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.548
-      objectReference: {fileID: 0}
-    - target: {fileID: 3142964134529286280, guid: ce709486807cbb84992e8945bb69dc10,
-        type: 3}
-      propertyPath: m_Pitch
-      value: 0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6483783503837403548, guid: ce709486807cbb84992e8945bb69dc10,
         type: 3}
