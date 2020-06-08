@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] ParticleSystem deathParticles;
     [SerializeField] ParticleSystem clearLevelParticles;
+
+    [SerializeField] float levelLoadDelay;
     
     
     AudioSource m_MyAudioSource;
@@ -65,7 +67,7 @@ public class Movement : MonoBehaviour
         m_MyAudioSource.PlayOneShot(death);
         deathParticles.Play();
         state = State.Dying;
-        Invoke("ReloadFirstScene", 1f);
+        Invoke("ReloadFirstScene", levelLoadDelay);
     }
 
     private void StarSucessSequence()
@@ -75,7 +77,7 @@ public class Movement : MonoBehaviour
         m_MyAudioSource.PlayOneShot(clearLevel);
         
         state = State.Transcending;
-        Invoke("LoadNextScene", 1.5f);
+        Invoke("LoadNextScene", levelLoadDelay);
     }
 
     private void LoadNextScene()
@@ -103,7 +105,7 @@ public class Movement : MonoBehaviour
     private void ApplyThrust()
     {
 
-        rigidBody.AddRelativeForce(Vector3.up * shipThrust);
+        rigidBody.AddRelativeForce(Vector3.up * shipThrust * Time.deltaTime);
         if (!m_MyAudioSource.isPlaying)
         {
             m_MyAudioSource.PlayOneShot(mainEngine);

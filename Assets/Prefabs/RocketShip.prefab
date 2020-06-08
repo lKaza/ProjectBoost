@@ -235,7 +235,7 @@ Rigidbody:
   m_GameObject: {fileID: 1870109265470175310}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.4
+  m_Drag: 0.8
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rcsThrust: 450
-  shipThrust: 30
+  shipThrust: 2250
   mainEngine: {fileID: 8300000, guid: 351b485796f27d74e9578a9fddfad4fe, type: 3}
   death: {fileID: 8300000, guid: 016a79562def6824f87827dc96915825, type: 3}
   clearLevel: {fileID: 8300000, guid: 0a45b87a386f95345ac90e4b8d13b568, type: 3}

@@ -2176,6 +2176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c91e4b1c163324494905c3f3c33919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: -20, z: 0}
+  rotationVector: {x: 10, y: 10, z: 10}
+  period: 2
+  movementFactor: 0
+  rotationFactor: 0
 --- !u!1 &757998629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,8 +3960,9 @@ GameObject:
   - component: {fileID: 1381811448}
   - component: {fileID: 1381811447}
   - component: {fileID: 1381811446}
+  - component: {fileID: 1381811450}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Cube Oscilator2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4030,12 +4036,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1381811445}
   m_LocalRotation: {x: -0, y: -0.7117446, z: -0, w: 0.7024384}
-  m_LocalPosition: {x: -39.06286, y: 21.08104, z: 21.4605}
+  m_LocalPosition: {x: -39.06286, y: 27.1, z: 21.4605}
   m_LocalScale: {x: 15.563829, y: 21.382343, z: 2.2966}
   m_Children: []
   m_Father: {fileID: 259804825}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.754005, z: 0}
+--- !u!114 &1381811450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381811445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c91e4b1c163324494905c3f3c33919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: -20, z: 0}
+  rotationVector: {x: 10, y: 10, z: 10}
+  period: 1
+  movementFactor: 0
+  rotationFactor: 0
 --- !u!1 &1386105139
 GameObject:
   m_ObjectHideFlags: 0
@@ -5332,7 +5355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861512371}
   m_LocalRotation: {x: -0.30909464, y: -0.61164314, z: -0.3236012, w: 0.6524074}
-  m_LocalPosition: {x: -39.162857, y: 36.981037, z: 23.4}
+  m_LocalPosition: {x: -47.8, y: 35.2, z: 23.4}
   m_LocalScale: {x: 15.5638275, y: 31.99728, z: 2.2966}
   m_Children: []
   m_Father: {fileID: 259804825}
@@ -5996,9 +6019,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 174313696, guid: ce709486807cbb84992e8945bb69dc10, type: 3}
-      propertyPath: m_Drag
-      value: 0.8
+    - target: {fileID: 174313697, guid: ce709486807cbb84992e8945bb69dc10, type: 3}
+      propertyPath: levelLoadDelay
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 619006765580087109, guid: ce709486807cbb84992e8945bb69dc10,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1870109265470175310, guid: ce709486807cbb84992e8945bb69dc10,
         type: 3}
