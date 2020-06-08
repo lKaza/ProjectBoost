@@ -92,7 +92,7 @@ public class Movement : MonoBehaviour
         m_MyAudioSource.PlayOneShot(death);
         deathParticles.Play();
         state = State.Dying;
-        Invoke("ReloadFirstScene", levelLoadDelay);
+        Invoke("ReloadScene", levelLoadDelay);
         
     }
 
@@ -100,8 +100,7 @@ public class Movement : MonoBehaviour
     {     
         clearLevelParticles.Play();
         m_MyAudioSource.Stop();
-        m_MyAudioSource.PlayOneShot(clearLevel);
-        
+        m_MyAudioSource.PlayOneShot(clearLevel);        
         state = State.Transcending;
         Invoke("LoadNextScene", levelLoadDelay);
     }
@@ -115,9 +114,10 @@ public class Movement : MonoBehaviour
         }
         SceneManager.LoadScene(nextSceneIndex);
     }
-    private void ReloadFirstScene()
+    private void ReloadScene()
     {
-        SceneManager.LoadScene(0);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
     private void Thrust()
     {
@@ -135,8 +135,10 @@ public class Movement : MonoBehaviour
     }
     private void ApplyThrust()
     {
-
+        
         rigidBody.AddRelativeForce(Vector3.up * shipThrust * Time.deltaTime);
+        Vector3 temp = new Vector3(transform.position.x,transform.position.y,0f);
+        transform.position = temp;
         if (!m_MyAudioSource.isPlaying)
         {
             m_MyAudioSource.PlayOneShot(mainEngine);
@@ -145,8 +147,8 @@ public class Movement : MonoBehaviour
     }
     void Rotate()
     {
-
-        rigidBody.freezeRotation = true; // take manual rotation     
+        rigidBody.angularVelocity = Vector3.zero;
+        
         float rotationThisFrame = rcsThrust * Time.deltaTime;
         if (Input.GetKey(KeyCode.A))
         {
@@ -157,7 +159,7 @@ public class Movement : MonoBehaviour
             transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
 
-        rigidBody.freezeRotation = false; //resume world rotation
+        
     }
 
 
