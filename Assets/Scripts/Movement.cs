@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class Movement : MonoBehaviour
 {
+    
     [SerializeField]
     float rcsThrust = 100f;
     [SerializeField]
@@ -24,11 +26,13 @@ public class Movement : MonoBehaviour
     Rigidbody rigidBody;
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
+    bool myCollider = true;
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         m_MyAudioSource = GetComponent<AudioSource>();
+        
     }
 
 
@@ -39,12 +43,33 @@ public class Movement : MonoBehaviour
         {
             Thrust();
             Rotate();
+            
+        }
+        if(Debug.isDebugBuild){
+            DebugNextLevel();
+            DebugToggleCollisions();
+        }
+    }
+
+    private void DebugToggleCollisions()
+    {
+         if(Input.GetKeyDown(KeyCode.C))
+        {
+            myCollider = false;
+        }
+    }
+
+    private void DebugNextLevel()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            StarSucessSequence();
         }
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (state != State.Alive) { return; }
+        if (state != State.Alive || myCollider == false) { return; }
 
         switch (other.gameObject.tag)
         {
@@ -68,6 +93,7 @@ public class Movement : MonoBehaviour
         deathParticles.Play();
         state = State.Dying;
         Invoke("ReloadFirstScene", levelLoadDelay);
+        
     }
 
     private void StarSucessSequence()
@@ -82,7 +108,12 @@ public class Movement : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex +1;
+        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings){
+            nextSceneIndex = 0;
+        }
+        SceneManager.LoadScene(nextSceneIndex);
     }
     private void ReloadFirstScene()
     {
